@@ -55,35 +55,6 @@ main  :: proc ()  {
       return
     }
     fmt.println("args: ->", args)
-
-    // pid, ferr := os.fork()
-    // if  ferr != os.ERROR_NONE {
-    //   fmt.println("Error forking the process")
-    //   return
-    // }
-    //
-    //   program := string(args[0])
-    // if pid == 0 {
-    //   fmt.println("executing program: ", args)
-    //   switch program {
-    //     case "exit":
-    //     fmt.println("that's exit")
-    //     return
-    //     case "one":
-    //     fmt.println("that's one")
-    //     return
-    //     case "two":
-    //     fmt.println("that's two")
-    //     return
-    //     case:
-    //     fmt.println("that's two")
-    //     err := os.execvp(program, {})
-    //
-    //     if err != os.ERROR_NONE {
-    //       fmt.println("error executing the program: ", program)
-    //     }
-    //   }
-    // }
   }
   return
 }
