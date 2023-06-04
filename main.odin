@@ -19,6 +19,13 @@ handle_input :: proc(words: []string) {
     fmt.println("should one")
   } else  {
     fmt.println("just a program")
+    pid, err := os.fork()
+    if err != os.ERROR_NONE {
+      return
+    }
+    if pid == 0{
+      os.execvp(prog, args)
+    }
   }
 }
 
