@@ -11,20 +11,25 @@ Error :: enum {
 }
 
 handle_input :: proc(words: []string) {
-  fmt.println("handling input", words)
   prog, args := words[0], words[1:]
   if strings.compare(prog, "exit") == 0{
     fmt.println("should exit")
+    return
   } else if strings.compare(prog, "one") == 0{
     fmt.println("should one")
   } else  {
     fmt.println("just a program")
     pid, err := os.fork()
     if err != os.ERROR_NONE {
+      fmt.println("faild to fork")
       return
     }
     if pid == 0{
-      os.execvp(prog, args)
+      err = os.execvp(prog, args)
+      if err != os.ERROR_NONE {
+      fmt.println("Error in program")
+      return
+      }
     }
   }
 }
@@ -50,11 +55,9 @@ main  :: proc ()  {
     args: []string
     err: Error
     read_input()
-    fmt.println("words", words)
     if err != .None {
       return
     }
-    fmt.println("args: ->", args)
   }
   return
 }
